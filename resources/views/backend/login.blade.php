@@ -6,37 +6,124 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-	
+	<base href="{{asset("")}}backend/">
 	<link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
+	<!DOCTYPE html>
+	<html lang="en">
 
-	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-			<div class="login-panel panel panel-default">
-				<div class="panel-heading">Log in</div>
-				<div class="panel-body">
-					<form role="form">
-						<fieldset>
-							<div class="form-group">
-								<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
-							</div>
-							<div class="form-group">
-								<input class="form-control" placeholder="Password" name="password" type="password" value="">
-							</div>
-							<div class="checkbox">
-								<label>
-									<input name="remember" type="checkbox" value="Remember Me">Remember Me
-								</label>
-							</div>
-							<a href="index.html" class="btn btn-primary">Login</a>
-						</fieldset>
-					</form>
-				</div>
+	<head>
+		<title>Login V9</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--===============================================================================================-->
+		<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="css/util.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<!--===============================================================================================-->
+	</head>
+
+	<body class="pt-0">
+
+
+		<div class="container-login100 container-fluid" style="background-image: url('images/bg-01.jpg');">
+			<div class="wrap-login100 p-l-50 p-r-50 p-t-75 p-b-25 pb-0">
+				<form class="login100-form validate-form" method="POST">
+					@csrf
+					<fieldset>
+						@if(session('thong-bao'))
+								<div class="alert alert-danger">
+									{{session('thong-bao')}}
+								</div>
+						@endif
+						
+						<span class="login100-form-title p-b-37">
+							Sign In
+						</span>
+
+						<div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
+							<input class="input100" type="text" name="email" placeholder="username or email"
+								value="{{old('email')}}">
+							<span class="focus-input100"></span>
+						</div>
+						{{showError($errors, 'email')}}
+						<div class="wrap-input100 validate-input m-b-25" data-validate="Enter password">
+							<input class="input100" type="password" name="password" placeholder="password">
+							<span class="focus-input100"></span>
+						</div>
+						{{showError($errors, 'password')}}
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn">
+								Sign In
+							</button>
+						</div>
+
+						<div class="text-center p-t-57 p-b-20">
+							<span class="txt1">
+								Or login with
+							</span>
+						</div>
+
+						<div class="flex-c p-b-112">
+							<a href="#" class="login100-social-item">
+								<i class="fa fa-facebook-f"></i>
+							</a>
+
+							<a href="#" class="login100-social-item">
+								<img src="images/icons/icon-google.png" alt="GOOGLE">
+							</a>
+						</div>
+
+						<div class="text-center">
+							<a href="#" class="txt2 hov1">
+								Sign Up
+							</a>
+						</div>
+					</fieldset>
+				</form>
+
+
 			</div>
-		</div><!-- /.col-->
-	</div><!-- /.row -->
-</body>
+		</div>
 
-</html>
+
+
+		<div id="dropDownSelect1"></div>
+
+		<!--===============================================================================================-->
+		<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="vendor/animsition/js/animsition.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="vendor/bootstrap/js/popper.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="vendor/select2/select2.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="vendor/daterangepicker/moment.min.js"></script>
+		<script src="vendor/daterangepicker/daterangepicker.js"></script>
+		<!--===============================================================================================-->
+		<script src="vendor/countdowntime/countdowntime.js"></script>
+		<!--===============================================================================================-->
+		<script src="js/main.js"></script>
+
+	</body>

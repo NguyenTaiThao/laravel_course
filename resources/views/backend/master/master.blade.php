@@ -40,8 +40,8 @@
                		<ul class="nav menu">
 			<li class="@if($routeName == "index") active @endif"><a href="{{route("index")}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tổng quan</a></li>
 			<li class="@if($routeName == "category" || $routeName == "category.edit" || $routeName == "category.add") active @endif"><a href="{{route("category")}}"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper" /></svg> Danh Mục</a></li>
-			<li class="@if($routeName == "product") active @endif"><a href="{{route("product")}}"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Sản phẩm</a></li>
-			<li class="@if($routeName == "order") active @endif"><a href="{{route("order")}}"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg> Đơn hàng</a></li>
+			<li class="@if($routeName == "product" || $routeName == "product.add" || $routeName == "product.edit") active @endif"><a href="{{route("product")}}"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Sản phẩm</a></li>
+			<li class="@if($routeName == "order" || $routeName == "processed") active @endif"><a href="{{route("order")}}"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg> Đơn hàng</a></li>
 			<li  role="presentation" class="divider"></li>
 			<li class="@if($routeName == "user" || $routeName == "user.add" || $routeName == "user.edit") active @endif"><a href="{{route("user")}}"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Quản lý thành viên</a></li>
 		

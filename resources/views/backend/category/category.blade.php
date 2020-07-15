@@ -29,15 +29,11 @@
 						<div class="row">
 							<div class="col-md-5">
 
-								<div class="form-group">
+								<div class="form-group animate__animated animate__rotateIn">
 									<label for="">Danh mục cha:</label>
 									<select class="form-control" name="" id="">
-										<option>----ROOT----</option>
-										<option>Nam</option>
-										<option>---|Áo khoác nam</option>
-										<option>---|---|Áo khoác nam</option>
-										<option>Nữ</option>
-										<option>---|Áo khoác nữ</option>
+										<option value="0">----ROOT----</option>
+										{{getCategory($list, 0, "", 2)}}
 									</select>
 								</div>
 								<div class="form-group">
@@ -61,42 +57,8 @@
 								<h3 style="margin: 0;"><strong>Phân cấp Menu</strong></h3>
 								<div class="vertical-menu">
 									<div class="item-menu active">Danh mục </div>
-									<div class="item-menu"><span>Nam</span>
-										<div class="category-fix">
-											<a class="btn-category btn-primary" href="e{{route("category.edit")}}"><i class="fa fa-edit"></i></a>
-											<a class="btn-category btn-danger" href="#"><i class="fas fa-times"></i></i></a>
-
-										</div>
-									</div>
-									<div class="item-menu"><span>---|Áo khoác Nam</span>
-										<div class="category-fix">
-											<a class="btn-category btn-primary" href="{{route("category.edit")}}"><i class="fa fa-edit"></i></a>
-											<a class="btn-category btn-danger" href="#"><i class="fas fa-times"></i></i></a>
-
-										</div>
-									</div>
-									<div class="item-menu"><span>---|---|Áo khoác Nam (Dành cho việc mở rộng)</span>
-										<div class="category-fix">
-											<a class="btn-category btn-primary" href="{{route("category.edit")}}"><i class="fa fa-edit"></i></a>
-											<a class="btn-category btn-danger" href="#"><i class="fas fa-times"></i></i></a>
-
-										</div>
-									</div>
-									<div class="item-menu"><span>Nữ</span>
-										<div class="category-fix">
-											<a class="btn-category btn-primary" href="{{route("category.edit")}}"><i class="fa fa-edit"></i></a>
-											<a class="btn-category btn-danger" href="#"><i class="fas fa-times"></i></i></a>
-
-										</div>
-									</div>
-									<div class="item-menu"><span>---|Áo khoác Nữ</span>
-										<div class="category-fix">
-											<a class="btn-category btn-primary" href="{{route("category.edit")}}"><i class="fa fa-edit"></i></a>
-											<a class="btn-category btn-danger" href=""><i class="fas fa-times"></i></i></a>
-
-										</div>
-									</div>
-
+									{{getCategoryList($list, 0, "")}}
+									
 								</div>
 							</div>
 						</div>

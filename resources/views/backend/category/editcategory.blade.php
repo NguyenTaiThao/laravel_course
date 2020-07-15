@@ -34,12 +34,7 @@
 								<div class="form-group">
 									<label for="">Danh mục cha:</label>
 									<select class="form-control" name="parent" >
-										<option>----ROOT----</option>
-										<option>Nam</option>
-										<option>---|Áo khoác nam</option>
-										<option>---|---|Áo khoác nam</option>
-										<option selected>Nữ</option>
-										<option>---|Áo khoác nữ</option>
+										{{getCategory($arr[1], 0, "", $arr[2])}}
 									</select>
 								</div>
 								<div class="form-group">

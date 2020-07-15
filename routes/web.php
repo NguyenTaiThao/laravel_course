@@ -15,29 +15,35 @@ use Illuminate\Support\Facades\Route;
 
 // route cho backend
 Route::group(['prefix'=>"backend",'namespace'=>'backend'], function(){
-
+    Route::group(['namespace'=>'Auth'], function () {
+        Route::get('/login', "LoginController@login")->name('backend.login');
+        Route::post('/login', "LoginController@postLogin");
+    });
     Route::get('/dashboard', "BackendController@index")->name("index");
     
-    Route::group(['prefix' =>'category'], function(){
-        Route::get('/', "BackendController@category")->name("category");
-        Route::get('/add', "BackendController@addcategory")->name("category.add");
-        Route::get('/edit', "BackendController@editcategory")->name("category.edit");
+    Route::group(['prefix' =>'category', 'namespace'=>'Category'], function(){
+        Route::get('/', "CategoryController@category")->name("category");
+        Route::get('/add', "CategoryController@addcategory")->name("category.add");
+        Route::get('/edit/{id}', "CategoryController@editcategory")->name("category.edit");
     });
     
-    Route::group(["prefix"=>"user"], function(){
-        Route::get('/', "BackendController@user")->name("user");
-        Route::get('/add', "BackendController@adduser")->name("user.add");
-        Route::get('/edit', "BackendController@edituser")->name("user.edit");
+    Route::group(["prefix"=>"user", 'namespace'=>'User'], function(){
+        Route::get('/', "UserController@user")->name("user");
+        Route::get('/add', "UserController@adduser")->name("user.add");
+        Route::get('/edit', "UserController@edituser")->name("user.edit");
     });
     
-    Route::group(["prefix"=>"product"], function(){
-        Route::get('/', "BackendController@product")->name("product");
-        Route::get('/add', "BackendController@addproduct")->name("product.add");
-        Route::get('/edit', "BackendController@editproduct")->name("product.edit");
+    Route::group(["prefix"=>"product", 'namespace'=>'product'], function(){
+        Route::get('/', "ProductController@product")->name("product");
+        Route::get('/add', "ProductController@addproduct")->name("product.add");
+        Route::post('/add', "ProductController@postaddproduct")->name("product.add");
+        Route::get('/edit', "ProductController@editproduct")->name("product.edit");
     });
     
-    Route::get('/order', "BackendController@order")->name("order");
-    Route::get('/processed', "BackendController@processed")->name("processed");
+    Route::group(['prefix' => 'order','namespace'=>'order'], function () {
+        Route::get('/order', "OrderController@order")->name("order");
+        Route::get('/processed', "OrderController@processed")->name("processed");
+    });
 });
     
 
@@ -46,10 +52,15 @@ Route::group(['prefix'=>"backend",'namespace'=>'backend'], function(){
 Route::group(['namespace'=>'frontend'], function(){
     route::get('/', 'FrontendController@index')->name("frontend.index");
     route::get('/about', 'FrontendController@about')->name("frontend.about");
-    route::get('/cart', 'FrontendController@cart')->name("frontend.cart");
-    route::get('/checkout', 'FrontendController@checkout')->name("frontend.checkout");
-    route::get('/complete', 'FrontendController@complete')->name("frontend.complete");
+    Route::group(['namespace' => 'cart'], function () {
+        route::get('/cart', 'CartController@cart')->name("frontend.cart");
+        route::get('/checkout', 'CartController@checkout')->name("frontend.checkout");
+        route::get('/complete', 'CartController@complete')->name("frontend.complete");
+    });
     route::get('/contact', 'FrontendController@contact')->name("frontend.contact");
-    route::get('/detail', 'FrontendController@detail')->name("frontend.detail");
-    route::get('/shop', 'FrontendController@shop')->name("frontend.shop");
+    
+    Route::group(['namespace' => 'product'], function () {
+        route::get('/detail', 'ProductController@detail')->name("frontend.detail");
+        route::get('/shop', 'ProductController@shop')->name("frontend.shop");
+    });
 });

@@ -25,7 +25,7 @@
 						<div class="bootstrap-table">
 							<div class="table-responsive">
 
-								<a href="processed.html" class="btn btn-success">Đơn đã xử lý</a>
+								<a href="{{route('processed')}}" class="btn btn-success">Đơn đã xử lý</a>
 								<table class="table table-bordered" style="margin-top:20px;">
 									<thead>
 										<tr class="bg-primary">
